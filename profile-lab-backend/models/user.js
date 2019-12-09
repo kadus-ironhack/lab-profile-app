@@ -1,16 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  name: {
+  username: String,
+  password: String,
+  campus: {
     type: String,
-    trim: true
+    enum: [
+      "Madrid",
+      "Barcelona",
+      "Miami",
+      "Paris",
+      "Berlin",
+      "Amsterdam",
+      "México",
+      "Sao Paulo",
+      "Lisbon"
+    ]
   },
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-    trim: true
-  }
+  course: { type: String, enum: ["WebDev", "UX/UI", "Data Analytics"] },
+  image: String
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model("User", schema);
